@@ -1,0 +1,12 @@
+Title: Delete
+
+----
+
+Text: 
+
+There are no more confirmations 
+and there is no way to reverse this decision.
+
+----
+
+Subtitle: Are you sure you want to delete your account?

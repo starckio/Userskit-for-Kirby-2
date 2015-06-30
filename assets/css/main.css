@@ -1,0 +1,469 @@
+/*
+
+Theme:    Foliox
+Demo URL: http://kirby.dsply.fr/foliox
+
+---
+
+Author:   Christopher Boutille
+URL:      http://www.dsply.fr
+Twitter:  @bydsply
+
+*/
+
+
+/* Reset
+-------------------------------------------------- */
+*, *:before, *:after {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+article, aside, details, figcaption, figure,
+footer, header, hgroup, main, nav, section, summary {
+	display: block;
+}
+
+
+/* Media
+-------------------------------------------------- */
+img {
+	display: block;
+	max-width: 100%;
+	height: auto;
+	border-width: 0;
+	outline: 0;
+}
+
+
+/* Links
+-------------------------------------------------- */
+a {
+	color: #999;
+	text-decoration: none;
+}
+a:hover {
+	color: #212121;
+}
+
+
+/* Clearfix
+-------------------------------------------------- */
+.cf:after {
+	content: "";
+	display: table;
+	clear: both;
+}
+
+
+/* Site
+-------------------------------------------------- */
+html {
+	height: 100%;
+	font-family: "Roboto", sans-serif;
+	-webkit-text-size-adjust: 100%;
+	-ms-text-size-adjust: 100%;
+	text-rendering: optimizeLegibility;
+	-webkit-font-smoothing: antialiased;
+	font-smoothing: antialiased;
+}
+body {
+	margin: 0 auto;
+	font-size: 1.25em;
+	line-height: 1.5em;
+	padding: 1.5em 1.5em 0;
+	max-width: 35em;
+	background-color: white;
+	color: #525252;
+}
+
+@media screen and (min-width: 30em) {
+	body {
+		padding-top: 2.5em;
+	}
+}
+
+
+/* Header
+-------------------------------------------------- */
+.header {
+	line-height: 1.5em;
+	text-align: center;
+}
+.logo {
+	font-size: 1.4em;
+	font-weight: 300;
+	margin-bottom: .5em;
+	display: block;
+	color: #525252;
+}
+
+@media screen and (min-width: 30em) {
+	.header {
+		text-align: inherit;
+	}
+	.logo {
+		float: left;
+		margin-bottom: 0;
+	}
+}
+
+
+/* Navigation
+-------------------------------------------------- */
+div.toggle {
+	margin-top: 1em;
+	display: inline-block;
+}
+.menu {
+	display: none;
+}
+.menu li {
+	list-style: none;
+	position: relative;
+}
+.menu li a {
+	color: #525252;
+	padding: .5em .5em;
+	border-top: 1px solid #ddd;
+	font-weight: 400;
+	display: block;
+}
+.menu li a:hover {
+	color: #212121;
+	text-decoration: none;
+}
+.menu li a.active,
+.menu li a.active:hover {
+	color: #212121;
+}
+.menu.active {
+	display: block;
+	border: 1px solid #ddd;
+	margin-top: 1em;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
+}
+.menu.active li:first-child a {
+	border-top: none;
+}
+
+@media screen and (min-width: 30em) {
+  div.toggle {
+  	display: none;
+  }
+	.menu {
+		display: block;
+		float: right;
+		margin-right: -.5em;
+	}
+	.menu li {
+		float: left;
+	}
+	.menu li.span {
+		width: 1px;
+		height: 1.5em;
+		background-color: #DDD;
+		margin: 0 .5em;
+	}
+	.menu li a {
+		padding: 0 .5em;
+		border: 0;
+	}
+}
+
+
+/* Headings
+-------------------------------------------------- */
+h1 {
+	font-size: 2em;
+	line-height: 1em;
+	font-weight: 300;
+	margin-bottom: 1em;
+}
+.title {
+	text-align: center;
+}
+h2 {
+	font-size: 2em;
+	line-height: 1.25em;
+	font-weight: 300;
+	margin-bottom: .5em;
+	color: #212121;
+}
+h3 {
+	font-size: 1.4em;
+	line-height: 1.5em;
+	font-weight: 400;
+	margin-bottom: .5em;
+}
+h4 {
+	font-size: 1.125em;
+	font-weight: 700;
+	line-height: 1.5em;
+	margin-bottom: .5em;
+}
+h1 a, h2 a, h3 a, h4 a {
+	color: inherit;
+	border: 0 !important;
+}
+
+
+
+/* Main
+-------------------------------------------------- */
+.main {
+	margin-top: 4em;
+	margin-bottom: 4em;
+}
+.main hr {
+	margin: 3em 0;
+	height: 2px;
+	background: #212121;
+}
+.main p,
+.main figure,
+.main ul,
+.main ol {
+	margin-bottom: 1.5em;
+}
+.main a {
+	color: #999;
+	text-decoration: none;
+}
+.main a:hover {
+	color: #999;
+	border-bottom: 1px solid #999;
+}
+
+/* Text blocks */
+.text ul,
+.text ol {
+	margin-left: 1em;
+}
+
+.center {
+	text-align: center;
+}
+
+/* Button
+-------------------------------------------------- */
+input[type="submit"], button, .button, a.button {
+	font-family: inherit;
+	font-size: 1em;
+	line-height: 1.5;
+	font-weight: 400;
+	color: white;
+	background-color: #2fdab8;
+	border: none !important;
+	padding: .7em 1.5em;
+	display: inline-block;
+	cursor: pointer;
+}
+input[type="submit"]:hover, button:hover, .button:hover, button:focus, .button:focus {
+	color: white;
+	background-color: #39ac95;
+	outline: none;
+}
+input[type="submit"]:active, button:active, .button:active {
+	color: white;
+	background-color: #427067;
+}
+input[type="submit"].gray, button.gray, .button.gray, a.button.gray {
+	background-color: #878787;
+}
+input[type="submit"].gray:hover, button.gray:hover, .button.gray:hover, button.gray:focus, .button.gray:focus {
+	background-color: #595959;
+}
+input[type="submit"].gray:active, button.gray:active, .button.gray:active, div.toggle.active {
+	background-color: #333333;
+}
+input[type="submit"].red, button.red, .button.red, a.button.red {
+	background-color: #ff5e4d;
+}
+input[type="submit"].red:hover, button.red:hover, .button.red:hover, button.red:focus, .button.red:focus {
+	background-color: #ff301a;
+}
+input[type="submit"].red:active, button.red:active, .button.red:active {
+	background-color: #990f00;
+}
+
+
+/* Notifications
+-------------------------------------------------- */
+.alert {
+	width: 100%;
+	display: block;
+	background-color: #333;
+	color: white;
+	margin-bottom: 1.5em;
+	position: relative;
+	overflow: hidden;
+	text-align: center;
+	font-weight: 400;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
+}
+.alert p {
+	font-size: 1.125em;
+	line-height: 1.5em;
+	padding: .5em;
+	margin-bottom: 0em;
+}
+.alert p:last-of-type {
+	margin-bottom: 0;
+}
+.alert.success {
+	background: #2fdab8;
+}
+.alert.error {
+	background-color: #ff5e4d;
+}
+
+
+/* Footer
+-------------------------------------------------- */
+.footer {
+	text-align: center;
+	padding-bottom: 3em;
+}
+.footer p {
+	color: silver;
+	font-size: .8em;
+}
+.footer a {
+	color: #999;
+}
+.footer a:hover {
+	color: #212121;
+	border-bottom: 1px solid #212121;
+}
+.colophon .heart-icon {
+	background: url("../images/heart.svg") no-repeat;
+	display: inline-block;
+	height: 12px;
+	margin: 0 .1rem;
+	width: 14px;
+}
+
+
+/* Page Home
+-------------------------------------------------- */
+.cover img {
+	width: 100%;
+	height: auto;
+	margin-bottom: 1.5em;
+	display: block;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
+}
+
+
+/* Page Contact and Form
+-------------------------------------------------- */
+form label {
+	font-family: "Roboto", sans-serif;
+	color: #999;
+	font-size: .9em;
+	line-height: 1em;
+	padding-left: .7em;
+	padding-bottom: .7em;
+	display: block;
+}
+form label span {
+	font-weight: 400;
+	cursor: pointer;
+	color: #D52C2C;
+}
+form div {
+	margin-bottom: 1.5em;
+}
+form div:last-of-type {
+	margin-bottom: 0;
+}
+form input[type="text"],
+form input[type="email"],
+form input[type="password"],
+form textarea {
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	width: 100%;
+	font-size: 1em;
+	line-height: 1.5em;
+	padding: .7em;
+	margin: 0;
+	font-family: "Roboto", sans-serif;
+	color: #525252;
+	background-color: #ebebeb;
+	border: none;
+	position: relative;
+	display: block;
+	appearance: none;
+	outline: none;
+}
+form textarea {
+	min-height: 150px;
+	resize: vertical;
+	display: block;
+}
+form input[type="text"]:hover,
+form input[type="email"]:hover,
+form input[type="password"]:hover,
+form textarea:hover {
+	
+}
+form input[type="text"]:focus,
+form input[type="email"]:focus,
+form input[type="password"]:focus,
+form textarea:focus {
+	background-color: #f2f2f2;
+}
+form .error input[type="text"],
+form .error input[type="email"],
+form .error input[type="password"],
+form .error textarea,
+form .error select {
+	background-color: #ffedeb;
+}
+form button {
+	margin-top: .5em;
+}
+form .help {
+	color: #999;
+	font-size: .9em;
+	margin: .3em .7em 0;
+	text-align: center;
+}
+
+@media screen and (min-width: 40em) {
+	form {
+		width: 70%;
+		margin: 0 auto;
+	}
+}
+
+
+/* Page Contact success
+-------------------------------------------------- */
+article.ok {
+	text-align: center;
+	margin-top: 2.5em;
+	margin-bottom: 2.5em;
+}
+article.ok p { color: silver }
+
+
+/* Page Error
+-------------------------------------------------- */
+#error article {
+	text-align: center;
+	margin-top: 2.5em;
+	margin-bottom: 2.5em;
+}
+#error article p { color: silver }

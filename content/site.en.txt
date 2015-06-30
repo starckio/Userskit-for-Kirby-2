@@ -1,0 +1,13 @@
+Title: Userskit
+
+----
+
+Author: Christopher Boutillé
+
+----
+
+Description: Kirby is awesome
+
+----
+
+Keywords: Kirby,CMS,file-based
