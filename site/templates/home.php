@@ -2,14 +2,15 @@
 
 <main class="main" role="main">
 
-  <article class="text">
-		<?php if ($image = $page->cover()): ?>
-		<figure class="cover">
-			<img src="<?php echo $page->image($image)->dataURI() ?>" alt="<?php echo $page->title()->html() ?>" />
-		</figure>
+	<div class="text">
+		<?php if($user = $site->user()): ?>
+		<h1>Bienvenue <?= $user->firstname() ?> !</h1>
+		<?php else: ?>
+		<h1><?= $page->subtitle()->or($page->title()) ?></h1>
 		<?php endif ?>
-		<h1 class="title"><?php echo $page->subtitle()->or($page->title()) ?></h1>
-	</article>
+
+		<?= $page->text()->kirbytext() ?>
+	</div>
 
 </main>
 

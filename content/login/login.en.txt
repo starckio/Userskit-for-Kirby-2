@@ -1,9 +1,0 @@
-Title: Login
-
-----
-
-Subtitle: Welcome back.
-
-----
-
-Error: Invalid username or password.

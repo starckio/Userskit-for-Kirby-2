@@ -2,27 +2,29 @@
 
 return function($site, $pages, $page) {
 
-  // handle the form submission
-  if(r::is('post') and get('delete')) {
+	// Seuls les utilisateurs connectés sont autorisés!
+	$user = $site->user();
+	if(!$user) go('account/register');
 
-    // fetch the user by username and run the 
-    // login method with the password
-    if($user = $site->user(get('username'))->delete()) {
-      // redirect to the homepage 
-      // if the login was successful
-      go('register');
-    } else {
-      // make sure the alert is being 
-      // displayed in the template
-      $error = true;
-    }
+	// Gérer la soumission du formulaire
+	if(r::is('post') and get('delete')) {
 
-  } else {
-    // nothing has been submitted
-    // nothing has gone wrong
-    $error = false;  
-  }
+		// Chercher l'utilisateur par nom d'utilisateur et exécuter
+		// la méthode de suppression
+		$user = $site->user();
+		$user->logout();
+		if($user = $site->user($user->username())->delete()) {
+			// Redirection vers la page d'inscription
+			// si la connexion a été réussie
+			go('account/register');
+		} else {
+			$error = true;
+		}
 
-  return array('error' => $error);
+	} else {
+		$error = false;  
+	}
+
+	return compact('error');
 
 };

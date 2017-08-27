@@ -1,31 +1,27 @@
-<?php 
+<?php
 
 return function($site, $pages, $page) {
 
-  // don't show the login screen to already logged in users
-  if($site->user()) go('/');
+	// Ne pas afficher l'écran de connexion aux utilisateurs déjà connectés
+	if($site->user()) go('/');
 
-  // handle the form submission
-  if(r::is('post') and get('login')) {
+	// Gérer la soumission du formulaire
+	if(r::is('post') and get('login')) {
 
-    // fetch the user by username and run the 
-    // login method with the password
-    if($user = $site->user(get('username')) and $user->login(get('password'))) {
-      // redirect to the homepage 
-      // if the login was successful
-      go('account');
-    } else {
-      // make sure the alert is being 
-      // displayed in the template
-      $error = true;
-    }
+		// Chercher l'utilisateur par email et exécuter
+		// la méthode de connexion avec le mot de passe
+		if($user = site()->users()->findBy('email',get('email')) and $user->login(get('password'))) {
+			// Redirection vers la page account
+			// si la connexion a été réussie
+			go('account');
+		} else {
+			$error = 'Nom d\'utilisateur ou mot de passe invalide.';
+		}
 
-  } else {
-    // nothing has been submitted
-    // nothing has gone wrong
-    $error = false;  
-  }
+	} else {
+		$error = false;
+	}
 
-  return array('error' => $error);
+	return compact('error');
 
 };

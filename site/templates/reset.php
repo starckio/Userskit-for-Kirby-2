@@ -4,28 +4,19 @@
 
 	<h1 class="title center"><?= $page->subtitle()->or($page->title()) ?></h1>
 
+	<?php if($error): ?>
+	<div class="alert error">
+		<?= $error ?>
+	</div>
+	<?php endif ?>
+
+	<?php if(isset($success)): ?>
+	<div class="alert success">
+		<?= $success ?>
+	</div>
+	<?php endif ?>
+
 	<form method="post" class="burger">
-
-		<?php if(isset($success)): ?>
-		<div class="alert success">
-			<?= $success ?>
-		</div>
-		<?php endif ?>
-
-		<?php if($error): ?>
-		<div class="alert error">
-			<p><?= $error ?></p>
-		</div>
-		<?php endif ?>
-
-		<div class="field">
-			<label for="firstname">Prénom</label>
-			<input type="text" id="firstname" name="firstname">
-		</div>
-		<div class="field">
-			<label for="lastname">Nom</label>
-			<input type="text" id="lastname" name="lastname">
-		</div>
 		<div class="field">
 			<label for="email">Adresse email</label>
 			<input type="text" id="email" name="email">
@@ -36,7 +27,7 @@
 			<small class="help">For Robots.</small>
 		</div>
 		<div class="field">
-			<input class="btn" type="submit" name="register" value="Inscription">
+			<input class="btn" type="submit" name="reset" value="Réinistialiser">
 			<a class="link" href="<?= url('login') ?>">Se connecter</a>
 		</div>
 	</form>

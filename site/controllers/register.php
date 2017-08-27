@@ -1,35 +1,52 @@
-<?php 
+<?php
 
-return function($site, $pages, $page) {
+return function ($site, $pages, $page) {
 
-  // handle the form submission
-  if(r::is('post') and get('register')) {
+	// Disons au robot que tout va bien
+	if(r::is('post') and get('subject') != '') go(url('error'));
 
-    try {
+	// Processus du formulaire d'inscription
+	if(r::is('post') and get('register') !== null) {
 
-      $user = $site->users()->create(array(
-        'username'  => get('username'),
-        'email'     => get('email'),
-        'password'  => get('password'),
-        'language'  => 'en'
-      ));
-      // make sure the alert is being 
-      // displayed in the template
-      $success = true;
+		// Le nom d'utilisateur sera l'adresse courriel avec la ponctuation supprimée.
+		// Les utilisateurs finaux ne l'utiliseront pas, nous avons juste besoin d'un ID unique pour le compte.
+		$username = str::slug(get('email'),'');
 
-      } catch(Exception $e) {
-      // make sure the alert is being 
-      // displayed in the template
-      $error = true;
+		// Vérifie les doublons de comptes
+		$duplicateEmail = $site->users()->findBy('email',trim(get('email')));
+		$duplicateUsername = $site->users()->findBy('username',$username);
 
-      }
+		if(count($duplicateEmail) === 0 and count($duplicateUsername) === 0) {
+			try {
+				// Mot de passe aléatoire pour la configuration initiale.
+				// L'utilisateur va créer son propre mot de passe après la vérification par adresse courriel.
+				$password = bin2hex(openssl_random_pseudo_bytes(16));
 
-  } else {
-    // nothing has been submitted
-    // nothing has gone wrong
-    $error = false;
-  }
+				// Créer un compte
+				$user = $site->users()->create(array(
+					'username'  => $username,
+					'firstname' => trim(get('firstname')),
+					'lastname'  => trim(get('lastname')),
+					'email'     => trim(get('email')),
+					'password'  => $password,
+					'language'  => 'en'
+				));
 
-  return array('error' => $error, 'success' => $success);
+				// Envoyer un email de réinitialisation
+				resetPassword($user->email(),true);
 
+				$success = 'Votre compte vient d\'être créé! Vous allez recevoir un courriel afin de l\'activer.';
+
+			} catch(Exception $e) {
+				$error = 'Assurez-vous d\'avoir inscrit toute les infos correctement, y compris votre courriel.';
+			}
+		} else {
+			$error = 'Un compte a déjà été créé avec cette adresse email.';
+		}
+	} else {
+		$error = false;
+	}
+
+	// Passer les variables au modèle
+	return compact('error', 'success');
 };
