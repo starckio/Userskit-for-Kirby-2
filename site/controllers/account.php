@@ -4,7 +4,7 @@ return function($site, $pages, $page) {
 
 	// Seuls les utilisateurs connectés sont autorisés!
 	$user = $site->user();
-	if(!$user) go('account/register');
+	if(!$user) go('login');
 
 	$error = null;
 

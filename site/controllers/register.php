@@ -2,6 +2,9 @@
 
 return function ($site, $pages, $page) {
 
+	// Ne pas afficher l'écran de connexion aux utilisateurs déjà connectés
+	if($site->user()) go('/');
+
 	// Disons au robot que tout va bien
 	if(r::is('post') and get('subject') != '') go(url('error'));
 
