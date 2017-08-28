@@ -14,4 +14,4 @@ Keywords: Kirby, CMS, file-based
 
 ----
 
-Copyright: © 2009-(date: Year) (link: http://www.starck.io text: starck.io)
+Copyright: © 2009-(date: Year) - (link: https://github.com/starckio/Userskit text: Userkit) by (link: http://www.starck.io text: starck.io).
